@@ -8,19 +8,17 @@ For detailed information about crosswalk, please visit the homepage of original 
 
 ### IMPORTANT NOTICES
 
-- Crosswalk does not work for Android 10+ devices. I recommend you split the app in 2 different projects, one with crosswalk and one without. The one without crosswalk must support minimum android 7 (sdk level 26). Th
+- Crosswalk does not work for Android 10+ devices. I recommend you split the app in 2 different projects, one with crosswalk and one without. The one without crosswalk must support minimum android 7 (sdk level 26).
 
 Config.xml must have:
 
     <platform name="android">
         <preference name="android-minSdkVersion" value="26" />
-        <preference name="android-targetSdkVersion" value="29" />
     </platform>
 
 platforms/android/gradle.properties must have:
 
     cdvMinSdkVersion=26
-    cdvTargetSdkVersion=29
 
 
 ### Install
