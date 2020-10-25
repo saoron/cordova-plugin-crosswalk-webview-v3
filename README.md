@@ -57,6 +57,9 @@ Check this gist to build all of them in one bash script: (<https://gist.github.c
 
 ### Release Notes
 
+#### 3.0.4 (October 25, 2020)
+* Replaced unsupported gradle function in merge task (fixes [#12](https://github.com/ardabeyazoglu/cordova-plugin-crosswalk-webview-v3/issues/12))
+
 #### 3.0.3 (February 18, 2020)
 * Changed 64bit product flavors to arm64 only, with a versionCode*10 + 4.
 
