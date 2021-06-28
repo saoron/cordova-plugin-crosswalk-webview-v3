@@ -7,6 +7,7 @@ Since there is still a lot of android devices with legacy webview (before 7.0), 
 For detailed information about crosswalk, please visit the homepage of original library. 
 
 ### IMPORTANT NOTICES
+- Crosswalk AAR is from [ks32/CrosswalkNative](https://github.com/ks32/CrosswalkNative/)
 
 - Crosswalk does not work for Android 10+ devices. I recommend you split the app in 2 different projects, one with crosswalk and one without. The one without crosswalk must support minimum android 7 (sdk level 26).
 

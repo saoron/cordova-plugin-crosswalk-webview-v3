@@ -111,6 +111,9 @@ cdvPluginPostBuildExtras.add({
       maven {
         url xwalkMavenRepo
       }
+      flatDir {
+        dirs 'libs'
+      }
     }
 
     android {
@@ -124,6 +127,20 @@ cdvPluginPostBuildExtras.add({
                     }
                 }
             }
+        }
+
+        aaptOptions {
+            noCompress 'dat', 'pak'
+        }
+
+        buildTypes {
+            release {
+                minifyEnabled false
+            }
+        }
+
+        defaultConfig {
+            multiDexEnabled true
         }
     }
 
@@ -153,7 +170,9 @@ cdvPluginPostBuildExtras.add({
     println xwalkSpec
 
     dependencies {
-        implementation xwalkSpec
+        // implementation xwalkSpec
+        implementation 'com.pakdata.xwalk.refactor:xwalk_core_lirary:77@aar'
+        implementation 'com.android.support:multidex:1.0.3'
     }
 
     if (file('assets/xwalk-command-line').exists()) {
