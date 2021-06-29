@@ -28,9 +28,9 @@ import android.webkit.ValueCallback;
 import org.apache.cordova.CordovaDialogsHelper;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.LOG;
-import org.xwalk.core.XWalkJavascriptResult;
-import org.xwalk.core.XWalkUIClient;
-import org.xwalk.core.XWalkView;
+import com.pakdata.xwalk.refactor.XWalkJavascriptResult;
+import com.pakdata.xwalk.refactor.XWalkUIClient;
+import com.pakdata.xwalk.refactor.XWalkView;
 
 import org.crosswalk.engine.XWalkWebViewEngine.PermissionRequestListener;
 

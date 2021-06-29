@@ -19,7 +19,7 @@
 package org.crosswalk.engine;
 
 import org.apache.cordova.ICordovaClientCertRequest;
-import org.xwalk.core.ClientCertRequest;
+import com.pakdata.xwalk.refactor.ClientCertRequest;
 
 import java.security.cert.X509Certificate;
 import java.security.Principal;

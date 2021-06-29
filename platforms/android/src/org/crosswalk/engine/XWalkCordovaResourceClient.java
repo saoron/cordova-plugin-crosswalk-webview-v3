@@ -29,10 +29,10 @@ import org.apache.cordova.CordovaResourceApi;
 import org.apache.cordova.CordovaResourceApi.OpenForReadResult;
 import org.apache.cordova.LOG;
 import org.apache.cordova.PluginManager;
-import org.xwalk.core.ClientCertRequest;
-import org.xwalk.core.XWalkHttpAuthHandler;
-import org.xwalk.core.XWalkResourceClient;
-import org.xwalk.core.XWalkView;
+import com.pakdata.xwalk.refactor.ClientCertRequest;
+import com.pakdata.xwalk.refactor.XWalkHttpAuthHandler;
+import com.pakdata.xwalk.refactor.XWalkResourceClient;
+import com.pakdata.xwalk.refactor.XWalkView;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

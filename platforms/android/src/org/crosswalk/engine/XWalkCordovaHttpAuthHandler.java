@@ -19,7 +19,7 @@
 package org.crosswalk.engine;
 
 import org.apache.cordova.ICordovaHttpAuthHandler;
-import org.xwalk.core.XWalkHttpAuthHandler;
+import com.pakdata.xwalk.refactor.XWalkHttpAuthHandler;
 
 /**
  * Specifies interface for HTTP auth handler object which is used to handle auth requests and

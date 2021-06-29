@@ -1,10 +1,10 @@
 package org.crosswalk.engine;
 
 import org.apache.cordova.CordovaPreferences;
-import org.xwalk.core.XWalkPreferences;
-import org.xwalk.core.XWalkResourceClient;
-import org.xwalk.core.XWalkUIClient;
-import org.xwalk.core.XWalkView;
+import com.pakdata.xwalk.refactor.XWalkPreferences;
+import com.pakdata.xwalk.refactor.XWalkResourceClient;
+import com.pakdata.xwalk.refactor.XWalkUIClient;
+import com.pakdata.xwalk.refactor.XWalkView;
 
 import android.content.Context;
 import android.content.Intent;

@@ -49,9 +49,9 @@ import org.apache.cordova.NativeToJsMessageQueue;
 import org.apache.cordova.PluginEntry;
 import org.apache.cordova.PluginManager;
 import org.xwalk.core.XWalkActivityDelegate;
-import org.xwalk.core.XWalkNavigationHistory;
-import org.xwalk.core.XWalkView;
-import org.xwalk.core.XWalkGetBitmapCallback;
+import com.pakdata.xwalk.refactor.XWalkNavigationHistory;
+import com.pakdata.xwalk.refactor.XWalkView;
+import com.pakdata.xwalk.refactor.XWalkGetBitmapCallback;
 
 /**
  * Glue class between CordovaWebView (main Cordova logic) and XWalkCordovaView (the actual View).
