@@ -56,15 +56,15 @@ public class XWalkFileChooser {
     private static final String TAG = "XWalkFileChooser";
 
     private Activity mActivity;
-    private ValueCallback<Uri> mFilePathCallback;
+    private ValueCallback<String[]> mFilePathCallback;
     private String mCameraPhotoPath;
 
     public XWalkFileChooser(Activity activity) {
         mActivity = activity;
     }
 
-    public boolean showFileChooser(ValueCallback<Uri> uploadFile, String acceptType,
-            String capture) {
+    public boolean showFileChooser(ValueCallback<String[]> uploadFile, String acceptType,
+            Boolean capture) {
         mFilePathCallback = uploadFile;
 
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -89,7 +89,7 @@ public class XWalkFileChooser {
 
         // A single mime type.
         if (!(acceptType.contains(SPLIT_EXPRESSION) || acceptType.contains(ANY_TYPES))) {
-            if (capture.equals("true")) {
+            if (capture) {
                 if (acceptType.startsWith(IMAGE_TYPE)) {
                     if (takePictureIntent != null) {
                         mActivity.startActivityForResult(takePictureIntent, INPUT_FILE_REQUEST_CODE);
@@ -145,7 +145,7 @@ public class XWalkFileChooser {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == INPUT_FILE_REQUEST_CODE && mFilePathCallback != null) {
             Log.d(TAG, "Activity result: " + resultCode);
-            Uri results = null;
+            String results = null;
 
             // Check that the response is a good one
             if(Activity.RESULT_OK == resultCode) {
@@ -153,12 +153,12 @@ public class XWalkFileChooser {
                 if(data == null || (data.getAction() == null && data.getData() == null)) {
                     // If there is not data, then we may have taken a photo
                     if(mCameraPhotoPath != null) {
-                        results = Uri.parse(mCameraPhotoPath);
+                        results = mCameraPhotoPath;
                     }
                 } else {
                     String dataString = data.getDataString();
                     if (dataString != null) {
-                        results = Uri.parse(dataString);
+                        results = dataString;
                     }
                     deleteImageFile();
                 }
@@ -167,9 +167,9 @@ public class XWalkFileChooser {
             }
 
             if (results != null) {
-                Log.d(TAG, "Received file: " + results.toString());
+                Log.d(TAG, "Received file: " + results);
             }
-            mFilePathCallback.onReceiveValue(results);
+            mFilePathCallback.onReceiveValue(new String[] {results});
             mFilePathCallback = null;
         }
     }

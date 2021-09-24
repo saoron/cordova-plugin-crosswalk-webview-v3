@@ -31,7 +31,7 @@
             <preference name="xwalkCommandLine" value="$XWALK_COMMANDLINE"/>
             <preference name="xwalkMode" value="$XWALK_MODE" />
             <preference name="xwalkMultipleApk" value="$XWALK_MULTIPLEAPK" />
-            <preference name="android-minSdkVersion" value="16" />
+            <preference name="android-minSdkVersion" value="21" />
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/*">
@@ -48,6 +48,7 @@
         <source-file src="platforms/android/src/org/crosswalk/engine/XWalkCordovaCookieManager.java" target-dir="src/org/crosswalk/engine"/>
         <source-file src="platforms/android/src/org/crosswalk/engine/XWalkCordovaClientCertRequest.java" target-dir="src/org/crosswalk/engine"/>
         <source-file src="platforms/android/src/org/crosswalk/engine/XWalkCordovaHttpAuthHandler.java" target-dir="src/org/crosswalk/engine"/>
+        <source-file src="platforms/android/src/org/crosswalk/engine/XWalkCordovaActivity.java" target-dir="src/org/crosswalk/engine"/>
         <source-file src="libs/xwalk_core_lirary-77.aar" target-dir="libs" />
 
         <framework src="platforms/android/xwalk.gradle" custom="true" type="gradleReference"/>

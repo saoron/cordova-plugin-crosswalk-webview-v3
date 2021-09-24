@@ -23,7 +23,7 @@ import android.os.Looper;
 import org.apache.cordova.CordovaBridge;
 import org.apache.cordova.ExposedJsApi;
 import org.json.JSONException;
-import org.xwalk.core.JavascriptInterface;
+import android.webkit.JavascriptInterface;
 
 class XWalkExposedJsApi implements ExposedJsApi {
     private final CordovaBridge bridge;
