@@ -196,20 +196,20 @@ public class XWalkWebViewEngine implements CordovaWebViewEngine {
     private void initWebViewSettings() {
         webView.setVerticalScrollBarEnabled(false);
 
-        boolean zOrderOnTop = preferences == null ? false : preferences.getBoolean(XWALK_Z_ORDER_ON_TOP, false);
-        webView.setZOrderOnTop(zOrderOnTop);
+        // boolean zOrderOnTop = preferences == null ? false : preferences.getBoolean(XWALK_Z_ORDER_ON_TOP, false);
+        // webView.setZOrderOnTop(zOrderOnTop);
 
         // Set xwalk webview settings by Cordova preferences.
         String xwalkUserAgent = preferences == null ? "" : preferences.getString(XWALK_USER_AGENT, "");
         if (!xwalkUserAgent.isEmpty()) {
             webView.setUserAgentString(xwalkUserAgent);
         }
-        
+
         String appendUserAgent = preferences.getString("AppendUserAgent", "");
         if (!appendUserAgent.isEmpty()) {
             webView.setUserAgentString(webView.getUserAgentString() + " " + appendUserAgent);
         }
-        
+
         if (preferences.contains("BackgroundColor")) {
             int backgroundColor = preferences.getInteger("BackgroundColor", Color.BLACK);
             webView.setBackgroundColor(backgroundColor);
@@ -232,11 +232,11 @@ public class XWalkWebViewEngine implements CordovaWebViewEngine {
             return;
         }
 
-        for (String path : extList) {
-            // Load the extension.
-            Log.i(TAG, "Start to load extension: " + path);
-            webView.getExtensionManager().loadExtension(XWALK_EXTENSIONS_FOLDER + File.separator + path);
-        }
+      //   for (String path : extList) {
+      //       // Load the extension.
+      //       Log.i(TAG, "Start to load extension: " + path);
+      //       webView.getExtensionManager().loadExtension(XWALK_EXTENSIONS_FOLDER + File.separator + path);
+      //   }
     }
 
     @Override
@@ -248,7 +248,7 @@ public class XWalkWebViewEngine implements CordovaWebViewEngine {
     @Override
     public boolean goBack() {
         if (this.webView.getNavigationHistory().canGoBack()) {
-            this.webView.getNavigationHistory().navigate(XWalkNavigationHistory.Direction.BACKWARD, 1);
+            this.webView.getNavigationHistory().navigate(XWalkNavigationHistory.DirectionInternal.BACKWARD, 1);
             return true;
         }
         return false;
@@ -304,6 +304,7 @@ public class XWalkWebViewEngine implements CordovaWebViewEngine {
     public void loadUrl(String url, boolean clearNavigationStack) {
         if (!activityDelegate.isXWalkReady()) {
             startUrl = url;
+            activityDelegate.onActivateCompleted();
             return;
         }
         webView.load(url, null);

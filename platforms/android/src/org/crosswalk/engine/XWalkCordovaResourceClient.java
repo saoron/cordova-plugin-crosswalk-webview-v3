@@ -43,7 +43,7 @@ public class XWalkCordovaResourceClient extends XWalkResourceClient {
     protected XWalkWebViewEngine parentEngine;
 
     public XWalkCordovaResourceClient(XWalkWebViewEngine parentEngine) {
-        super(parentEngine.webView);
+        super();
         this.parentEngine = parentEngine;
     }
 

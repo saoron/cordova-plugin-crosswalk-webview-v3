@@ -2,11 +2,20 @@
 
 This is a fork of original [cordova-plugin-crosswalk-webview](https://github.com/crosswalk-project/cordova-plugin-crosswalk-webview) library, which aims to provide compatibility with latest cordova versions.
 
-Since there is still a lot of android devices with legacy webview (before 7.0), crosswalk-webview project still makes sense for android. 
+Since there is still a lot of android devices with legacy webview (before 7.0), crosswalk-webview project still makes sense for android.
 
-For detailed information about crosswalk, please visit the homepage of original library. 
+For detailed information about crosswalk, please visit the homepage of original library.
 
 ### IMPORTANT NOTICES
+- MainActivity must extend from XWalkCordovaActivity for this plugin to work.  Example:
+
+```
+import org.crosswalk.engine.XWalkCordovaActivity;
+
+public class MainActivity extends XWalkCordovaActivity {
+
+```
+
 - Crosswalk AAR is from [ks32/CrosswalkNative](https://github.com/ks32/CrosswalkNative/)
 
 - Crosswalk does not work for Android 10+ devices. I recommend you split the app in 2 different projects, one with crosswalk and one without. The one without crosswalk must support minimum android 7 (sdk level 26).
@@ -14,12 +23,14 @@ For detailed information about crosswalk, please visit the homepage of original 
 Config.xml must have:
 
     <platform name="android">
-        <preference name="android-minSdkVersion" value="26" />
+        <preference name="android-minSdkVersion" value="21" />
     </platform>
 
 platforms/android/gradle.properties must have:
 
-    cdvMinSdkVersion=26
+    cdvMinSdkVersion=21
+    android.enableJetifier=true
+    android.useAndroidX=true
 
 
 ### Install

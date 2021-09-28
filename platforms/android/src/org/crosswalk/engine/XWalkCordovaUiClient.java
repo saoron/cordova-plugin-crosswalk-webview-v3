@@ -50,26 +50,6 @@ public class XWalkCordovaUiClient extends XWalkUIClient {
         dialogsHelper = new CordovaDialogsHelper(parentEngine.webView.getContext());
     }
 
-    @Override
-    public boolean onJavascriptModalDialog(XWalkView view, JavascriptMessageType type, String url,
-                                           String message, String defaultValue, XWalkJavascriptResult result) {
-        switch (type) {
-            case JAVASCRIPT_ALERT:
-                return onJsAlert(view, url, message, result);
-            case JAVASCRIPT_CONFIRM:
-                return onJsConfirm(view, url, message, result);
-            case JAVASCRIPT_PROMPT:
-                return onJsPrompt(view, url, message, defaultValue, result);
-            case JAVASCRIPT_BEFOREUNLOAD:
-                // Reuse onJsConfirm to show the dialog.
-                return onJsConfirm(view, url, message, result);
-            default:
-                break;
-        }
-        assert (false);
-        return false;
-    }
-
     /**
      * Tell the client to display a javascript alert dialog.
      */
@@ -164,11 +144,11 @@ public class XWalkCordovaUiClient extends XWalkUIClient {
      * @param status The load status of the webView, can be FINISHED, CANCELLED or FAILED.
      */
     @Override
-    public void onPageLoadStopped(XWalkView view, String url, LoadStatus status) {
+    public void onPageLoadStopped(XWalkView view, String url, XWalkUIClient.LoadStatusInternal status) {
         LOG.d(TAG, "onPageLoadStopped(" + url + ")");
-        if (status == LoadStatus.FINISHED) {
+        if (status == XWalkUIClient.LoadStatusInternal.FINISHED) {
             parentEngine.client.onPageFinishedLoading(url);
-        } else if (status == LoadStatus.FAILED) {
+        } else if (status == XWalkUIClient.LoadStatusInternal.FAILED) {
             // TODO: Should this call parentEngine.client.onReceivedError()?
             // Right now we call this from ResourceClient, but maybe that is just for sub-resources?
         }
@@ -176,8 +156,8 @@ public class XWalkCordovaUiClient extends XWalkUIClient {
 
     // File Chooser
     @Override
-    public void openFileChooser(XWalkView view, final ValueCallback<Uri> uploadFile,
-            final String acceptType, final String capture) {
+    public void openFileChooser(XWalkView view, ValueCallback<String[]> uploadFile, String acceptType, String title,
+                                String defaultFilename, boolean capture, int modeFlags) {
         if (mFileChooser == null) {
             mFileChooser = new XWalkFileChooser(parentEngine.cordova.getActivity());
             mFileChooserResultPlugin = new CordovaPlugin() {
